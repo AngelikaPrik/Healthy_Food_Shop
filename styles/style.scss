@@ -1,3 +1,141 @@
-.box {
-	color: red;
+$greyColor: #C4C4C4;
+
+%greenDark {
+	background: linear-gradient(139.19deg, #FFFFFF -81.69%, #0DA03F 46.16%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	background-color: #252525;
+	color: #fff;
+}
+
+h3 {
+	font-size: 24px;
+	margin: 0;
+}
+h4 {
+	margin: 0;
+}
+
+// header-----------------------------------------------------------------------
+
+.header {
+	margin: 0 auto;
+
+	&__links {
+		max-width: 600px;
+		margin: 12px auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__link {
+		text-decoration: none;
+		color: $greyColor;
+		font-size: 20px;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+}
+
+
+// preview------------------------------------------------------------------------
+
+.preview {
+	background-image: url(../img/tabs/fitness_image.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+
+}
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.tabheader {
+	background-color: rgba(37, 37, 37, 0.9);
+	max-width: 600px;
+	border-radius: 10px;
+	padding: 25px 30px;
+	margin-bottom: 20px;
+
+	&__block{
+		padding: 200px 0;
+	}
+	&__items {
+		margin-top: 30px;
+		padding-left: 25px;
+		border-left: 1px solid #fff;
+	}
+
+	&__item {
+		font-size: 22px;
+		font-weight: 400;
+		color: $greyColor;
+	}
+	&__title {
+		margin-top: 20px;
+		font-weight: 400;
+		font-size: 22px;
+
+		cursor: pointer;
+		&__active {
+			font-weight: 600;
+			@extend %greenDark;
+			position: relative;
+			&::before {
+				position: absolute;
+				content: '';
+				height: 35px;
+				width: 3px;
+				background: #fff;
+				left: -25px;
+			}
+		}
+	}
+
+	&__description {
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 20px;
+		color: #fff;
+	}
+}
+
+.choose-tariff {
+	&__btn {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		padding: 13px 20px;
+
+		background: linear-gradient(139.19deg, #FFFFFF -81.69%, #0DA03F 46.16%);
+		border-radius: 8px;
+		border: none;
+
+		font-weight: 500;
+		font-size: 22px;
+
+		color: #fff;
+	}
+}
+
+.description-meal {
+	font-size: 14px;
+	color: rgba(255, 255, 255, 0.7);
+
+	position: absolute;
+	bottom: 20px;
+	right: 130px;
 }
