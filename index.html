@@ -66,7 +66,9 @@
 					аспекты. Вам остается только полезная, сытная и правильная еда, которую мы привозим прямо под дверь.
 				</p>
 			</div>
+			<img id="plate" src="img/decorate/plate_offer.svg" alt="">
 		</div>
+		
 	</section>
 	<section class="advantages">
 		<div class="container">
@@ -76,7 +78,9 @@
 					<div class="offer__advantage-container">
 						<h3>Быстро и полезно
 						</h3>
-						<p class="offer__advantage-text">Готовка дома занимает много сил, времени и нервов. Мы привозим еду сразу на целый день, и ты можешь действовать так, как тебе удобно, не подстраиваясь ни под кого. Будь уверен в качестве продукта!</p>
+						<p class="offer__advantage-text">Готовка дома занимает много сил, времени и нервов. Мы привозим еду
+							сразу на целый день, и ты можешь действовать так, как тебе удобно, не подстраиваясь ни под кого.
+							Будь уверен в качестве продукта!</p>
 					</div>
 				</div>
 				<div class="offer__advantage">
@@ -84,10 +88,11 @@
 					<div class="offer__advantage-container">
 						<h3>Правильный рацион
 						</h3>
-						<p class="offer__advantage-text">Мы разработали специальное меню, где учтены все нюансы правильного питания, от баланса БЖУ до их приготовления и дробления рациона.
+						<p class="offer__advantage-text">Мы разработали специальное меню, где учтены все нюансы правильного
+							питания, от баланса БЖУ до их приготовления и дробления рациона.
 						</p>
 					</div>
-					
+
 				</div>
 			</div>
 			<div class="offer__slider">
@@ -99,13 +104,109 @@
 				<div class="offer__slider-counter">
 					<div class="offer__slider-prev">
 						<img src="icons/Vector.svg" alt="prev">
-				  </div>
-				  <div class="offer__slider-nums">
-					<span id="current">3</span>/<span id="total">4</span>
-				  </div>
-				  <div class="offer__slider-next">
+					</div>
+					<div class="offer__slider-nums">
+						<span id="current">3</span>/<span id="total">4</span>
+					</div>
+					<div class="offer__slider-next">
 						<img src="icons/Vector-1.svg" alt="next">
-				  </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="calculating">
+		<div class="container">
+			<h2 class="title">Рассчитаем вашу потребность в калориях?
+			</h2>
+			<div class="calculating__field">
+				<h4 class="calculating__subtitle">
+					Ваш пол
+				</h4>
+				<div class="calculating__choose" id="gender">
+					<div class="calculating__choose-item calculating__choose-item_active">Женщина</div>
+					<div class="calculating__choose-item">Мужчина</div>
+				</div>
+
+				<h4 class="calculating__subtitle">
+					Ваша конституция
+				</h4>
+				<div class="calculating__choose calculating__choose_medium">
+					<input type="text" id="height" placeholder="Введите рост" class="calculating__choose-item">
+					<input type="text" id="weight" placeholder="Введите вес" class="calculating__choose-item">
+					<input type="text" id="age" placeholder="Введите возраст" class="calculating__choose-item">
+				</div>
+
+				<h4 class="calculating__subtitle">
+					Выберите вашу физическая активность
+				</h4>
+				<div class="calculating__choose calculating__choose_big">
+					<div id="low" class="calculating__choose-item">Низкая активность </div>
+					<div id="small" class="calculating__choose-item calculating__choose-item_active">Невысокая активность
+					</div>
+					<div id="medium" class="calculating__choose-item">Умеренная активность</div>
+					<div id="high" class="calculating__choose-item">Высокая активность</div>
+				</div>
+
+				<div class="calculating__divider"></div>
+
+				<div class="calculating__total">
+					<h4 class="calculating__subtitle">
+						Ваша суточная норма калорий:
+					</h4>
+					<div class="calculating__result">
+						<span>2700</span> ккал
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="menu">
+		<h2 class="title">Наше меню на день</h2>
+		<div class="menu__field">
+			<div class="container">
+				<div class="menu__item">
+					<img src="img/menu/fitness.png" alt="vegy">
+					<div class="menu__item-content">
+						<h3 class="menu__item-subtitle">«Фитнес»</h3>
+						<div class="menu__item-descr">Меню «Фитнес» - это новый подход к приготовлению блюд: больше свежих
+							овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной
+							ценой и высоким качеством!</div>
+						<div class="menu__item-price">
+							<div class="menu__item-cost">Цена:</div>
+							<div class="menu__item-total"><span>229</span>грн/день</div>
+						</div>
+					</div>
+				</div>
+				<div class="menu__item">
+					<img src="img/menu/premium.png" alt="elite">
+					<div class="menu__item-content">
+						<h3 class="menu__item-subtitle">«Премиум»
+						</h3>
+						<div class="menu__item-descr">В меню «Премиум» используем красивый дизайн упаковки и качественное
+							исполнение блюд. Красная рыба, орехи, морепродукты, фрукты — ресторанное меню без похода в дорогой
+							ресторан!
+						</div>
+						<div class="menu__item-price">
+							<div class="menu__item-cost">Цена:</div>
+							<div class="menu__item-total"><span>550</span>грн/день</div>
+						</div>
+					</div>
+				</div>
+				<div class="menu__item">
+					<img src="img/menu/post.png" alt="post">
+					<div class="menu__item-content">
+<h3 class="menu__item-subtitle">«Постное»</h3>
+					<div class="menu__item-descr">Меню «Постное» - это тщательный подбор продуктов: отсутствие мяса, молоко
+						из миндаля, овса, кокоса, правильное количество белков за счет тофу и вегетарианских стейков.
+					</div>
+
+					<div class="menu__item-price">
+						<div class="menu__item-cost">Цена:</div>
+						<div class="menu__item-total"><span>430</span>грн/день</div>
+					</div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
