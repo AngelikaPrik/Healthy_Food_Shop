@@ -9,8 +9,8 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,500&display=swap"
 		rel="stylesheet">
-	<link rel="stylesheet" href="styles/style.css">
-	<link rel="stylesheet" href="styles/normilize.css">
+	<link rel="stylesheet" href="css/normilize.css">
+	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" type="image/x-icon" href="icons/favicon.svg">
 	<title>HealthyFood</title>
 </head>
@@ -68,7 +68,6 @@
 			</div>
 			<img id="plate" src="img/decorate/plate_offer.svg" alt="">
 		</div>
-		
 	</section>
 	<section class="advantages">
 		<div class="container">
@@ -166,23 +165,28 @@
 		<div class="menu__field">
 			<div class="container">
 				<div class="menu__item">
-					<img src="img/menu/fitness.png" alt="vegy">
+					<div class="menu__image">
+						<img src="img/menu/fitness.png" alt="vegy">
+					</div>
 					<div class="menu__item-content">
-						<h3 class="menu__item-subtitle">«Фитнес»</h3>
+						<div class="menu__item-subtitle">«Фитнес»</div>
 						<div class="menu__item-descr">Меню «Фитнес» - это новый подход к приготовлению блюд: больше свежих
 							овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной
 							ценой и высоким качеством!</div>
-						<div class="menu__item-price">
-							<div class="menu__item-cost">Цена:</div>
-							<div class="menu__item-total"><span>229</span>грн/день</div>
-						</div>
+							<div class="menu__item-price">
+								<div class="menu__item-cost">Цена:</div>
+								<div class="menu__item-total"><span>229</span>грн/день</div>
+							</div>
 					</div>
+					
 				</div>
 				<div class="menu__item">
-					<img src="img/menu/premium.png" alt="elite">
+					<div class="menu__image">
+						<img src="img/menu/premium.png" alt="elite">
+					</div>
 					<div class="menu__item-content">
-						<h3 class="menu__item-subtitle">«Премиум»
-						</h3>
+						<div class="menu__item-subtitle">«Премиум»
+						</div>
 						<div class="menu__item-descr">В меню «Премиум» используем красивый дизайн упаковки и качественное
 							исполнение блюд. Красная рыба, орехи, морепродукты, фрукты — ресторанное меню без похода в дорогой
 							ресторан!
@@ -194,20 +198,117 @@
 					</div>
 				</div>
 				<div class="menu__item">
-					<img src="img/menu/post.png" alt="post">
+					<div class="menu__image">
+						<img src="img/menu/post.png" alt="post">
+					</div>
 					<div class="menu__item-content">
-<h3 class="menu__item-subtitle">«Постное»</h3>
-					<div class="menu__item-descr">Меню «Постное» - это тщательный подбор продуктов: отсутствие мяса, молоко
-						из миндаля, овса, кокоса, правильное количество белков за счет тофу и вегетарианских стейков.
+						<div class="menu__item-subtitle">«Постное»</div>
+						<div class="menu__item-descr">Меню «Постное» - это тщательный подбор продуктов: отсутствие мяса,
+							молоко
+							из миндаля, овса, кокоса, правильное количество белков за счет тофу и вегетарианских стейков.
+						</div>
+						<div class="menu__item-price">
+							<div class="menu__item-cost">Цена:</div>
+							<div class="menu__item-total"><span>430</span>грн/день</div>
+						</div>
 					</div>
 
-					<div class="menu__item-price">
-						<div class="menu__item-cost">Цена:</div>
-						<div class="menu__item-total"><span>430</span>грн/день</div>
-					</div>
-					</div>
-					
 				</div>
+			</div>
+		</div>
+	</section>
+	<section class="promotion">
+		<div class="container">
+			<div class="promotion__text">
+				<h2 class="title">Акция для новых клиентов!</h2>
+				<div class="promotion__descr">
+					<p>При заказе питания на неделю, дарим скидку в размере:</p>
+					<div class="promotion__salenum">20%</div>
+				</div>
+			</div>
+			<div class="promotion__timer">
+				<h2>До конца акции осталось:</h2>
+				<div class="timer">
+					<div class="timer__block">
+						<span id="days">12</span>дней
+					</div>
+					<div class="timer__block">
+						<span id="hours">20</span>
+						часов
+					</div>
+					<div class="timer__block">
+						<span id="minutes">56</span>
+						минут
+					</div>
+					<div class="timer__block">
+						<span id="seconds">20</span>
+						секунд
+					</div>
+				</div>
+				<p id="end-prom">*Акция закончится 20 мая в 00:00</p>
+			</div>
+		</div>
+	</section>
+	<section class="order">
+		<!-- <img class="order__image left" src="img/decorate/order_left.svg" alt=""> -->
+		<!-- <img class="order__image right" src="img/decorate/order_right.svg" alt=""> -->
+		<div class="container">
+			<h2 class="title">Заказывай пробный день прямо сейчас!</h2>
+			<form action="#" class="order__form">
+				<input required placeholder="Александр" name="name" type="text" class="order__input">
+				<input required placeholder="+7 (912) 345-67-89" name="phone" type="phone" class="order__input">
+				<button class="btn btn_dark btn_min">Перезвонить мне</button>
+			</form>
+			<p id="politicconf">
+				* Оправляя данные вы соглашаетесь с <a href="">Политикой конфиденцальности</a>.
+			</p>
+		</div>
+		
+	</section>
+	<section class="footer">
+		<div class="container">
+			<div class="footer__left">
+				<div class="socials">
+					<nav>
+						<a href="https://www.instagram.com/">
+							<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M21.285 0H8.715C3.255 0 0 3.255 0 8.715V21.27C0 26.745 3.255 30 8.715 30H21.27C26.73 30 29.985 26.745 29.985 21.285V8.715C30 3.255 26.745 0 21.285 0ZM15 20.82C11.79 20.82 9.18 18.21 9.18 15C9.18 11.79 11.79 9.18 15 9.18C18.21 9.18 20.82 11.79 20.82 15C20.82 18.21 18.21 20.82 15 20.82ZM23.88 7.32C23.805 7.5 23.7 7.665 23.565 7.815C23.415 7.95 23.25 8.055 23.07 8.13C22.89 8.205 22.695 8.25 22.5 8.25C22.095 8.25 21.72 8.1 21.435 7.815C21.3 7.665 21.195 7.5 21.12 7.32C21.045 7.14 21 6.945 21 6.75C21 6.555 21.045 6.36 21.12 6.18C21.195 5.985 21.3 5.835 21.435 5.685C21.78 5.34 22.305 5.175 22.785 5.28C22.89 5.295 22.98 5.325 23.07 5.37C23.16 5.4 23.25 5.445 23.34 5.505C23.415 5.55 23.49 5.625 23.565 5.685C23.7 5.835 23.805 5.985 23.88 6.18C23.955 6.36 24 6.555 24 6.75C24 6.945 23.955 7.14 23.88 7.32Z"
+									fill="#5DD887" />
+							</svg>
+						</a>
+						<a href="">
+							<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M30 21.285C30 26.745 26.745 30 21.285 30H19.5C18.675 30 18 29.325 18 28.5V19.845C18 19.44 18.33 19.095 18.735 19.095L21.375 19.05C21.585 19.035 21.765 18.885 21.81 18.675L22.335 15.81C22.38 15.54 22.17 15.285 21.885 15.285L18.69 15.33C18.27 15.33 17.94 15 17.925 14.595L17.865 10.92C17.865 10.68 18.06 10.47 18.315 10.47L21.915 10.41C22.17 10.41 22.365 10.215 22.365 9.96002L22.305 6.35999C22.305 6.10499 22.11 5.91 21.855 5.91L17.805 5.97002C15.315 6.01502 13.335 8.055 13.38 10.545L13.455 14.67C13.47 15.09 13.14 15.42 12.72 15.435L10.92 15.465C10.665 15.465 10.47 15.66 10.47 15.915L10.515 18.765C10.515 19.02 10.71 19.215 10.965 19.215L12.765 19.185C13.185 19.185 13.515 19.515 13.53 19.92L13.665 28.47C13.68 29.31 13.005 30 12.165 30H8.715C3.255 30 0 26.745 0 21.27V8.715C0 3.255 3.255 0 8.715 0H21.285C26.745 0 30 3.255 30 8.715V21.285V21.285Z"
+									fill="#5DD887" />
+							</svg>
+						</a>
+						<a href="">
+							<svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M30.97 14.1149C30.46 5.41493 22.555 -1.29006 13.45 0.209943C7.17997 1.24494 2.15498 6.32991 1.17998 12.5999C0.609981 16.2299 1.36001 19.6649 2.99501 22.4999L1.65999 27.4649C1.35999 28.5899 2.39496 29.6099 3.50496 29.2949L8.39498 27.9449C10.615 29.2499 13.21 29.9999 15.985 29.9999C24.445 29.9999 31.465 22.5449 30.97 14.1149ZM23.32 20.5799C23.185 20.8499 23.02 21.1049 22.81 21.3449C22.435 21.7499 22.0299 22.0499 21.5799 22.2299C21.1299 22.4249 20.635 22.5149 20.11 22.5149C19.345 22.5149 18.52 22.3349 17.665 21.9599C16.795 21.5849 15.94 21.0899 15.085 20.4749C14.215 19.8449 13.405 19.1399 12.625 18.3749C11.845 17.5949 11.155 16.7699 10.525 15.9149C9.90995 15.0599 9.41498 14.2049 9.05498 13.3499C8.69498 12.4949 8.515 11.6699 8.515 10.8899C8.515 10.3799 8.60499 9.88493 8.78499 9.43493C8.96499 8.96993 9.25002 8.54994 9.65502 8.17494C10.135 7.69494 10.66 7.46994 11.215 7.46994C11.425 7.46994 11.6349 7.51493 11.8299 7.60493C12.0249 7.69493 12.205 7.82993 12.34 8.02493L14.0799 10.4849C14.2149 10.6799 14.32 10.8449 14.38 11.0099C14.455 11.1749 14.485 11.3249 14.485 11.4749C14.485 11.6549 14.425 11.8349 14.32 12.0149C14.215 12.1949 14.08 12.3749 13.9 12.5549L13.3299 13.1549C13.2399 13.2449 13.21 13.3349 13.21 13.4549C13.21 13.5149 13.2249 13.5749 13.2399 13.6349C13.2699 13.6949 13.285 13.7399 13.3 13.7849C13.435 14.0399 13.675 14.3549 14.005 14.7449C14.35 15.1349 14.71 15.5399 15.1 15.9299C15.505 16.3349 15.895 16.6949 16.3 17.0399C16.69 17.3699 17.02 17.5949 17.275 17.7299C17.32 17.7449 17.365 17.7749 17.41 17.7899C17.47 17.8199 17.53 17.8199 17.605 17.8199C17.74 17.8199 17.83 17.7749 17.92 17.6849L18.4899 17.1149C18.6849 16.9199 18.865 16.7849 19.03 16.6949C19.21 16.5899 19.375 16.5299 19.57 16.5299C19.72 16.5299 19.87 16.5599 20.035 16.6349C20.2 16.7099 20.38 16.7999 20.56 16.9349L23.05 18.7049C23.245 18.8399 23.38 19.0049 23.47 19.1849C23.545 19.3799 23.59 19.5599 23.59 19.7699C23.5 20.0249 23.44 20.3099 23.32 20.5799Z"
+									fill="#5DD887" />
+							</svg>
+						</a>
+					</nav>
+				</div>
+				<nav class="politic">
+					<a href="#">Политика конфиденциальности</a>
+					<a href="#">Оферта</a>
+				</nav>
+			</div>
+			<div class="logo">
+				<a href="">
+					<img src="icons/logo_footer.svg" alt="">
+				</a>
+			</div>
+			<div class="footer__right">
+				<nav>
+					<a class="info" href="">Справочная информация</a>
+					<a href="tel:+73801034566">+7 (380) 103-45-66</a>
+					<a href="tel:+73801234567">+7 (380) 123-45-67</a>
+				</nav>
 			</div>
 		</div>
 	</section>

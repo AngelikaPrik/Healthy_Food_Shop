@@ -20,7 +20,12 @@
 
 	&__choose {
 		display: flex;
+		justify-content: space-evenly;
 		margin-top: 16px;
+		input {
+			width: 20%;
+			margin: 0;
+		}
 	}
 
 	&__choose-item {
