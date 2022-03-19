@@ -1,0 +1,89 @@
+.calculating {
+	background-image: url(../img/calculate_bg.jpg);
+	color: #000;
+
+	padding: 50px 0 80px 0;
+
+	h2 {
+		text-align: center;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__subtitle {
+		margin-top: 30px;
+	}
+
+	&__choose {
+		display: flex;
+		justify-content: space-evenly;
+		margin-top: 16px;
+		input {
+			width: 20%;
+			margin: 0;
+		}
+	}
+
+	&__choose-item {
+		padding: 12px 44px;
+		border: 1px solid $lightGreen;
+		border-radius: 10px;
+		margin-right: 20px;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&__choose-item_active {
+		background: $lightGreen;
+		color: #fff;
+	}
+
+	#gender {
+		border: 1px solid $lightGreen;
+		border-radius: 10px;
+
+		.calculating__choose-item {
+			border: none;
+			border-right: 1px solid $lightGreen;
+			margin-right: 0;
+			&:last-child {
+				border-right: none;
+			}
+		}
+	}
+
+	&__total {
+		display: flex;
+		align-items: center;
+		background: rgba(196, 196, 196, 0.3);
+		border-radius: 10px;
+
+		margin-top: 100px;
+
+		h4 {
+			margin: 0;
+			padding: 24px 22px;
+		}
+	}
+
+	&__result {
+		font-size: 24px;
+		font-weight: 500;
+
+		background: linear-gradient(139.19deg, #FFFFFF -81.69%, #0DA03F 46.16%);
+		color: #fff;
+		border-radius: 10px;
+		padding: 10px 30px;
+
+		span {
+			font-size: 48px;
+			font-weight: 600;
+		}
+	}
+}

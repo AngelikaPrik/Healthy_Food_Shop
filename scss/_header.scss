@@ -1,0 +1,23 @@
+.header {
+	margin: 0 auto;
+	background: $mainGrey;
+
+	&__links {
+		max-width: 600px;
+		margin: 12px auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__link {
+		text-decoration: none;
+		color: $lightGrey;
+		font-size: 20px;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+}
+
