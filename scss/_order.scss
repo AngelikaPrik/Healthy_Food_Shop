@@ -50,6 +50,12 @@
 
 		padding: 15px 15px 15px;
 		margin-bottom: 20px;
+		&:active,
+		&:focus,
+		&:visited {
+			background: #fff;
+			color: #000;
+		}
 	}
 
 	#politicconf {

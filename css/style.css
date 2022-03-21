@@ -6,6 +6,11 @@
   text-fill-color: transparent;
 }
 
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -80,16 +85,16 @@ h4 {
   transition: all 0.5s ease;
 }
 
+.tabheader__block {
+  padding: 200px 0;
+}
+
 .tabheader {
   background-color: rgba(37, 37, 37, 0.9);
   max-width: 600px;
   border-radius: 10px;
   padding: 25px 30px;
   margin-bottom: 20px;
-}
-
-.tabheader__block {
-  padding: 200px 0;
 }
 
 .tabheader__items {
@@ -113,7 +118,7 @@ h4 {
 }
 
 .tabheader__active div {
-  font-weight: 400;
+  font-weight: 300;
   font-size: 16px;
   color: #fff;
   margin-top: 10px;
@@ -150,14 +155,15 @@ h4 {
   font-weight: 500;
   font-size: 22px;
   color: #fff;
+  cursor: pointer;
 }
 
 .description-meal {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
   position: absolute;
-  bottom: 40px;
-  right: 130px;
+  bottom: 5%;
+  right: 6%;
 }
 
 .offer {
@@ -180,9 +186,9 @@ h4 {
 
 .offer__descr {
   margin-top: 30px;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 24px;
-  line-height: 28px;
+  line-height: 29px;
 }
 
 .offer__slide img {
@@ -221,7 +227,7 @@ h4 {
 }
 
 .offer__advantages {
-  width: 35%;
+  width: 37%;
 }
 
 .offer__advantage {
@@ -243,6 +249,7 @@ h4 {
 
 .offer__advantage-text {
   margin-top: 8px;
+  font-weight: 300;
 }
 
 .offer__slider-counter {
@@ -491,9 +498,12 @@ h4 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .promotion__descr {
@@ -652,6 +662,11 @@ h4 {
   margin-bottom: 20px;
 }
 
+.order__input:active, .order__input:focus, .order__input:visited {
+  background: #fff;
+  color: #000;
+}
+
 .order #politicconf {
   margin-top: 10px;
   color: #535353;
@@ -715,4 +730,84 @@ h4 {
 .footer a {
   color: #E5E5E5;
   margin-bottom: 10px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal__dialog {
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+.modal__content {
+  position: relative;
+  width: 100%;
+  padding: 40px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal__title {
+  color: #000;
+  padding-bottom: 30px;
+}
+
+.modal__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.modal__form h3 {
+  text-align: center;
+}
+
+.modal__form .btn {
+  background: linear-gradient(139.19deg, #FFFFFF -81.69%, #0DA03F 46.16%);
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+  color: #fff;
+  padding: 12px 0;
+  margin-top: 10px;
+}
+
+.modal__close {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  font-size: 30px;
+  color: #000;
+  opacity: .5;
+  font-weight: 700;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
 }

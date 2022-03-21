@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	// Timer--------------------------------------------------
 
-	const deadline = "2022-03-30";
+	const deadline = "2022-03-31";
 
 	function getTimeRemaining(endtime) {
 		const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -70,20 +70,21 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	function getZero(num) {
-		if(num >= 0 && num < 10) {
+		if (num >= 0 && num < 10) {
 			return `0${num}`;
 		} else {
 			return num;
 		}
 	}
+
 	function setClock(selector, endtime) {
-		
+
 		const timer = document.querySelector(selector),
-				days = timer.querySelector("#days"),
-				hours = timer.querySelector("#hours"),
-				minutes = timer.querySelector("#minutes"),
-				seconds = timer.querySelector("#seconds"),
-				timeInterval = setInterval(updateClock, 1000);
+			days = timer.querySelector("#days"),
+			hours = timer.querySelector("#hours"),
+			minutes = timer.querySelector("#minutes"),
+			seconds = timer.querySelector("#seconds"),
+			timeInterval = setInterval(updateClock, 1000);
 
 		updateClock();
 
@@ -95,11 +96,43 @@ window.addEventListener("DOMContentLoaded", () => {
 			minutes.innerHTML = getZero(t.minutes);
 			seconds.innerHTML = getZero(t.seconds);
 
-			if(t.total <= 0){
+			if (t.total <= 0) {
 				clearInterval(timeInterval);
 			}
 		}
 	}
 
 	setClock(".timer", deadline);
+
+	// Modal ------------------------------------------------------------------
+
+	const modalTrigger = document.querySelector("[data-modal]"),
+		modal = document.querySelector(".modal"),
+		modalCloseBtn = document.querySelector("[data-close]");
+
+	modalTrigger.addEventListener("click", () => {
+		modal.classList.add("show");
+		modal.classList.remove("hide");
+		document.body.style.overflow = "hidden";
+	});
+	
+	modalCloseBtn.addEventListener("click", closeModal);
+
+	modal.addEventListener("click", event => {
+		if (event.target === modal) {
+			closeModal();
+		}
+	});
+
+	document.addEventListener("keydown", event => {
+		if(event.code === "Escape" && modal.classList.contains("show")) {
+			closeModal();
+		}
+	});
+
+	function closeModal() {
+		modal.classList.add("hide");
+		modal.classList.remove("show");
+		document.body.style.overflow = "";
+	}
 });
