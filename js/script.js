@@ -1,3 +1,4 @@
+" use strict ";
 window.addEventListener("DOMContentLoaded", () => {
 	// Tabs--------------------------------------------------
 
@@ -11,7 +12,6 @@ window.addEventListener("DOMContentLoaded", () => {
 			"url('img/tabs/3.png')"
 		],
 		descMeal = document.querySelectorAll(".description-meal");
-
 	function hideTabContent() {
 		tabsContent.forEach(item => {
 			item.style.display = "none";
@@ -138,7 +138,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		document.body.style.overflow = "";
 	}
 
-	const modalTimerId = setTimeout(openModal, 10000);
+	// const modalTimerId = setTimeout(openModal, 10000);
 
 	function showModalByScroll() {
 		if ((window.pageYOffset + document.documentElement.clientHeight + 1) >= document.documentElement.scrollHeight) {
@@ -147,4 +147,71 @@ window.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 	window.addEventListener('scroll', showModalByScroll);
-});
+
+	class MenuCard {
+		constructor(src, alt, title, description, price, parentSelector, classListDiv) {
+			this.src = src;
+			this.alt = alt;
+			this.title = title;
+			this.description = description;
+			this.price = price;
+			this.transfer = 29.50;
+			this.parent = document.querySelector(parentSelector);
+			this.changeToUAH();
+			this.classListDiv = classListDiv;
+		}
+	
+		changeToUAH() {
+			this.price = Math.floor(this.price * this.transfer);
+		}
+	
+		render () {
+			const element = document.createElement("div");
+			element.classList.add(this.classListDiv);
+			element.innerHTML = ` 
+					<div class="menu__image">
+						<img src=${this.src} alt=${this.alt}>
+					</div>
+					<div class="menu__item-content">
+						<div class="menu__item-subtitle">${this.title}</div>
+						<div class="menu__item-descr">${this.description}</div>
+						<div class="menu__item-price">
+							<div class="menu__item-cost">Цена:</div>
+							<div class="menu__item-total"><span>${this.price}</span>грн/день</div>
+						</div>
+					</div>
+					`;
+			this.parent.append(element);
+		}
+	}
+
+	new MenuCard(
+		"img/menu/fitness.png",
+		"vegy",
+		"«Фитнес»",
+		"Меню «Фитнес - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!",
+		8,
+		".menu .container",
+		"menu__item"
+	).render();
+
+	new MenuCard(
+		"img/menu/premium.png",
+		"elite",
+		"«Премиум»",
+		"В меню «Премиум» используем красивый дизайн упаковки и качественное исполнение блюд. Красная рыба, орехи, морепродукты, фрукты — ресторанное меню без похода в дорогой ресторан!",
+		18,
+		".menu .container",
+		"menu__item"
+	).render();
+
+	new MenuCard(
+		"img/menu/post.png",
+		"post",
+		"«Постное»",
+		"Меню «Постное» - это тщательный подбор продуктов: отсутствие мяса,молоко из миндаля, овса, кокоса, правильное количество белков за счет тофу и вегетарианских стейков.",
+		15,
+		".menu .container",
+		"menu__item"
+	).render();
+});	
