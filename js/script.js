@@ -138,7 +138,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		document.body.style.overflow = "";
 	}
 
-	// const modalTimerId = setTimeout(openModal, 10000);
+	const modalTimerId = setTimeout(openModal, 10000);
 
 	function showModalByScroll() {
 		if ((window.pageYOffset + document.documentElement.clientHeight + 1) >= document.documentElement.scrollHeight) {
@@ -149,7 +149,7 @@ window.addEventListener("DOMContentLoaded", () => {
 	window.addEventListener('scroll', showModalByScroll);
 
 	class MenuCard {
-		constructor(src, alt, title, description, price, parentSelector, classListDiv) {
+		constructor(src, alt, title, description, price, parentSelector, ...classes) {
 			this.src = src;
 			this.alt = alt;
 			this.title = title;
@@ -158,7 +158,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			this.transfer = 29.50;
 			this.parent = document.querySelector(parentSelector);
 			this.changeToUAH();
-			this.classListDiv = classListDiv;
+			this.classes = classes || "menu__item";
 		}
 	
 		changeToUAH() {
@@ -167,7 +167,13 @@ window.addEventListener("DOMContentLoaded", () => {
 	
 		render () {
 			const element = document.createElement("div");
-			element.classList.add(this.classListDiv);
+
+			if(this.classes.length === 0) {
+				this.element = "menu__item";
+				element.classList.add(element);
+			} else {
+				this.classes.forEach(className => element.classList.add(className));
+			}
 			element.innerHTML = ` 
 					<div class="menu__image">
 						<img src=${this.src} alt=${this.alt}>
