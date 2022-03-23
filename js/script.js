@@ -1,44 +1,46 @@
-" use strict ";
-window.addEventListener("DOMContentLoaded", () => {
+' use strict ';
+
+window.addEventListener('DOMContentLoaded', () => {
 	// Tabs--------------------------------------------------
 
-	const tabsParent = document.querySelector(".tabheader__items"),
-		tabsContent = document.querySelectorAll(".tabcontent"),
-		tabs = document.querySelectorAll(".tabheader__item"),
-		preview = document.querySelector(".preview"),
-		bgImage = ["url('img/tabs/0.png')",
-			"url('img/tabs/1.png')",
-			"url('img/tabs/2.png')",
-			"url('img/tabs/3.png')"
-		],
-		descMeal = document.querySelectorAll(".description-meal");
+	const tabsParent = document.querySelector('.tabheader__items'),
+		tabsContent = document.querySelectorAll('.tabcontent'),
+		tabs = document.querySelectorAll('.tabheader__item'),
+		preview = document.querySelector('.preview'),
+		descMeal = document.querySelectorAll('.description-meal'),
+		bgImage = ['url("img/tabs/0.png")',
+			'url("img/tabs/1.png")',
+			'url("img/tabs/2.png")',
+			'url("img/tabs/3.png")'
+		];
+		
 	function hideTabContent() {
 		tabsContent.forEach(item => {
-			item.style.display = "none";
+			item.style.display = 'none';
 		});
 
 		tabs.forEach(item => {
-			item.classList.remove("tabheader__active");
+			item.classList.remove('tabheader__active');
 		});
 
 		descMeal.forEach(item => {
-			item.style.display = "none";
+			item.style.display = 'none';
 		});
 	}
 
 	function showTabContent(i = 0) {
-		tabs[i].classList.add("tabheader__active");
-		tabsContent[i].style.display = "block";
-		descMeal[i].style.display = " block";
+		tabs[i].classList.add('tabheader__active');
+		tabsContent[i].style.display = 'block';
+		descMeal[i].style.display = 'block';
 	}
 
 	hideTabContent();
 	showTabContent();
 
-	tabsParent.addEventListener("click", event => {
+	tabsParent.addEventListener('click', event => {
 		const target = event.target;
 
-		if (target && target.classList.contains("tabheader__item")) {
+		if (target && target.classList.contains('tabheader__item')) {
 			tabs.forEach((item, i) => {
 				if (target == item) {
 					hideTabContent();
@@ -51,17 +53,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	// Timer--------------------------------------------------
 
-	const deadline = "2022-03-31";
+	const deadline = '2022-03-31';
 
 	function getTimeRemaining(endtime) {
 		const t = Date.parse(endtime) - Date.parse(new Date()),
-			days = Math.floor(t / (1000 * 60 * 60 * 24)),
-			hours = Math.floor((t / (1000 * 60 * 60) % 24)),
-			minutes = Math.floor((t / 1000 / 60) % 60),
-			seconds = Math.floor((t / 1000) % 60);
+				days = Math.floor(t / (1000 * 60 * 60 * 24)),
+				hours = Math.floor((t / (1000 * 60 * 60) % 24)),
+				minutes = Math.floor((t / 1000 / 60) % 60),
+				seconds = Math.floor((t / 1000) % 60);
 
 		return {
-			"total": t,
+			'total': t,
 			days,
 			hours,
 			minutes,
@@ -80,11 +82,11 @@ window.addEventListener("DOMContentLoaded", () => {
 	function setClock(selector, endtime) {
 
 		const timer = document.querySelector(selector),
-			days = timer.querySelector("#days"),
-			hours = timer.querySelector("#hours"),
-			minutes = timer.querySelector("#minutes"),
-			seconds = timer.querySelector("#seconds"),
-			timeInterval = setInterval(updateClock, 1000);
+				days = timer.querySelector('#days'),
+				hours = timer.querySelector('#hours'),
+				minutes = timer.querySelector('#minutes'),
+				seconds = timer.querySelector('#seconds'),
+				timeInterval = setInterval(updateClock, 1000);
 
 		updateClock();
 
@@ -102,40 +104,39 @@ window.addEventListener("DOMContentLoaded", () => {
 		}
 	}
 
-	setClock(".timer", deadline);
+	setClock('.timer', deadline);
 
 	// Modal ------------------------------------------------------------------
 
-	const modalTrigger = document.querySelector("[data-modal]"),
-		modal = document.querySelector(".modal"),
-		modalCloseBtn = document.querySelector("[data-close]");
+	const modalTrigger = document.querySelector('[data-modal]'),
+		modal = document.querySelector('.modal'),
+		modalCloseBtn = document.querySelector('[data-close]');
 
-	modalTrigger.addEventListener("click", openModal);
-	
-	modalCloseBtn.addEventListener("click", closeModal);
+	modalTrigger.addEventListener('click', openModal);
+	modalCloseBtn.addEventListener('click', closeModal);
 
-	modal.addEventListener("click", event => {
+	modal.addEventListener('click', event => {
 		if (event.target === modal) {
 			closeModal();
 		}
 	});
 
-	document.addEventListener("keydown", event => {
-		if(event.code === "Escape" && modal.classList.contains("show")) {
+	document.addEventListener('keydown', event => {
+		if(event.code === 'Escape' && modal.classList.contains('show')) {
 			closeModal();
 		}
 	});
 
 	function openModal() {
-		modal.classList.add("show");
-		modal.classList.remove("hide");
-		document.body.style.overflow = "hidden";
+		modal.classList.add('show');
+		modal.classList.remove('hide');
+		document.body.style.overflow = 'hidden';
 		clearInterval(modalTimerId);
 	}
 	function closeModal() {
-		modal.classList.add("hide");
-		modal.classList.remove("show");
-		document.body.style.overflow = "";
+		modal.classList.add('hide');
+		modal.classList.remove('show');
+		document.body.style.overflow = '';
 	}
 
 	const modalTimerId = setTimeout(openModal, 10000);
@@ -158,7 +159,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			this.transfer = 29.50;
 			this.parent = document.querySelector(parentSelector);
 			this.changeToUAH();
-			this.classes = classes || "menu__item";
+			this.classes = classes || 'menu__item';
 		}
 	
 		changeToUAH() {
@@ -166,10 +167,10 @@ window.addEventListener("DOMContentLoaded", () => {
 		}
 	
 		render () {
-			const element = document.createElement("div");
+			const element = document.createElement('div');
 
 			if(this.classes.length === 0) {
-				this.element = "menu__item";
+				this.element = 'menu__item';
 				element.classList.add(element);
 			} else {
 				this.classes.forEach(className => element.classList.add(className));
@@ -192,32 +193,36 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 
 	new MenuCard(
-		"img/menu/fitness.png",
-		"vegy",
-		"«Фитнес»",
-		"Меню «Фитнес - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!",
+		'img/menu/fitness.png',
+		'vegy',
+		'«Фитнес»',
+		'Меню «Фитнес - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
 		8,
-		".menu .container",
-		"menu__item"
+		'.menu .container',
+		'menu__item'
 	).render();
 
 	new MenuCard(
-		"img/menu/premium.png",
-		"elite",
-		"«Премиум»",
-		"В меню «Премиум» используем красивый дизайн упаковки и качественное исполнение блюд. Красная рыба, орехи, морепродукты, фрукты — ресторанное меню без похода в дорогой ресторан!",
+		'img/menu/premium.png',
+		'elite',
+		'«Премиум»',
+		'В меню «Премиум» используем красивый дизайн упаковки и качественное исполнение блюд. Красная рыба, орехи, морепродукты, фрукты — ресторанное меню без похода в дорогой ресторан!',
 		18,
-		".menu .container",
-		"menu__item"
+		'.menu .container',
+		'menu__item'
 	).render();
 
 	new MenuCard(
-		"img/menu/post.png",
-		"post",
-		"«Постное»",
-		"Меню «Постное» - это тщательный подбор продуктов: отсутствие мяса,молоко из миндаля, овса, кокоса, правильное количество белков за счет тофу и вегетарианских стейков.",
+		'img/menu/post.png',
+		'post',
+		'«Постное»',
+		'Меню «Постное» - это тщательный подбор продуктов: отсутствие мяса,молоко из миндаля, овса, кокоса, правильное количество белков за счет тофу и вегетарианских стейков.',
 		15,
-		".menu .container",
-		"menu__item"
+		'.menu .container',
+		'menu__item'
 	).render();
+
+	// Forms -------------------------------------------------------------------------------------
+
+	
 });	
