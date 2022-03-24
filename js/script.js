@@ -109,7 +109,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	// Modal ------------------------------------------------------------------
 
 	const modalTrigger = document.querySelector('[data-modal]'),
-			modal = document.querySelector('.modal');
+		modal = document.querySelector('.modal');
 
 	modalTrigger.addEventListener('click', openModal);
 
@@ -237,41 +237,40 @@ window.addEventListener('DOMContentLoaded', () => {
 	function postData(form) {
 		form.addEventListener('submit', (event) => {
 			event.preventDefault();
-			const request = new XMLHttpRequest();
 
 			const statusMessage = document.createElement("div");
 			statusMessage.classList.add('lds-ellipsis');
-			statusMessage.innerHTML=`
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-					`;
+			statusMessage.innerHTML = `
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			`;
 			form.append(statusMessage);
 
-			request.open('POST', 'http://192.168.0.103:8099/api/form');
-			request.setRequestHeader('Content-type', 'application/json');
-
 			const formData = new FormData(form);
-			const object = {};
 
+			const object = {};
 			formData.forEach((value, key) => {
 				object[key] = value;
 			});
 
-			request.send(JSON.stringify(object));
-
-			request.addEventListener('load', () => {
-				if (request.status === 200) {
-					console.log(request.response);
-					showThanksModal(message.success);
-					form.reset();
-					statusMessage.remove();
-				} else {
-					console.log(request.response);
-					showThanksModal(message.failure);
-					statusMessage.remove();
-				}
+			fetch('http://192.168.0.103:8099/api/form', {
+				method: 'POST',
+				headers: {
+					'Content-type': 'application/json'
+				},
+				body: JSON.stringify(object)
+			}).then(data => {
+				console.log(data);
+				showThanksModal(message.success);
+				statusMessage.remove();
+			}).catch(() => {
+				console.log(request.response);
+				showThanksModal(message.failure);
+				statusMessage.remove();
+			}).finally(() => {
+				form.reset();
 			});
 		});
 	}
@@ -301,5 +300,4 @@ window.addEventListener('DOMContentLoaded', () => {
 			closeModal();
 		}, 4000);
 	}
-
 });
