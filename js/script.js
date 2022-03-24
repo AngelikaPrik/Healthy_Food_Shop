@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
 			'url("img/tabs/2.png")',
 			'url("img/tabs/3.png")'
 		];
-		
+
 	function hideTabContent() {
 		tabsContent.forEach(item => {
 			item.style.display = 'none';
@@ -57,10 +57,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	function getTimeRemaining(endtime) {
 		const t = Date.parse(endtime) - Date.parse(new Date()),
-				days = Math.floor(t / (1000 * 60 * 60 * 24)),
-				hours = Math.floor((t / (1000 * 60 * 60) % 24)),
-				minutes = Math.floor((t / 1000 / 60) % 60),
-				seconds = Math.floor((t / 1000) % 60);
+			days = Math.floor(t / (1000 * 60 * 60 * 24)),
+			hours = Math.floor((t / (1000 * 60 * 60) % 24)),
+			minutes = Math.floor((t / 1000 / 60) % 60),
+			seconds = Math.floor((t / 1000) % 60);
 
 		return {
 			'total': t,
@@ -82,11 +82,11 @@ window.addEventListener('DOMContentLoaded', () => {
 	function setClock(selector, endtime) {
 
 		const timer = document.querySelector(selector),
-				days = timer.querySelector('#days'),
-				hours = timer.querySelector('#hours'),
-				minutes = timer.querySelector('#minutes'),
-				seconds = timer.querySelector('#seconds'),
-				timeInterval = setInterval(updateClock, 1000);
+			days = timer.querySelector('#days'),
+			hours = timer.querySelector('#hours'),
+			minutes = timer.querySelector('#minutes'),
+			seconds = timer.querySelector('#seconds'),
+			timeInterval = setInterval(updateClock, 1000);
 
 		updateClock();
 
@@ -122,7 +122,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	});
 
 	document.addEventListener('keydown', event => {
-		if(event.code === 'Escape' && modal.classList.contains('show')) {
+		if (event.code === 'Escape' && modal.classList.contains('show')) {
 			closeModal();
 		}
 	});
@@ -133,6 +133,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		document.body.style.overflow = 'hidden';
 		clearInterval(modalTimerId);
 	}
+
 	function closeModal() {
 		modal.classList.add('hide');
 		modal.classList.remove('show');
@@ -161,15 +162,15 @@ window.addEventListener('DOMContentLoaded', () => {
 			this.changeToUAH();
 			this.classes = classes || 'menu__item';
 		}
-	
+
 		changeToUAH() {
 			this.price = Math.floor(this.price * this.transfer);
 		}
-	
-		render () {
+
+		render() {
 			const element = document.createElement('div');
 
-			if(this.classes.length === 0) {
+			if (this.classes.length === 0) {
 				this.element = 'menu__item';
 				element.classList.add(element);
 			} else {
@@ -224,5 +225,53 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// Forms -------------------------------------------------------------------------------------
 
-	
-});	
+	const forms = document.querySelectorAll("form");
+	const message = {
+		loading: 'Загрузка',
+		success: 'Спасибо! Наш менеджер свяжется с вами в течение 5 минут.',
+		failure: 'Что-то пошло не так...'
+	};
+
+	forms.forEach(item => {
+		postData(item);
+	});
+
+	function postData(form) {
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			const request = new XMLHttpRequest();
+			const statusMessage = document.createElement("div");
+
+			statusMessage.classList.add('status');
+			statusMessage.textContent = message.loading;
+			form.append(statusMessage);
+
+
+			request.open('POST', 'js/server.php');
+			request.setRequestHeader('Content-type', 'application/json');
+
+			const formData = new FormData(form);
+			const object = {};
+
+			formData.forEach((value, key) => {
+				object[key] = value;
+			});
+
+			request.send(JSON.stringify(object));
+
+			request.addEventListener('load', () => {
+				if (request.status === 200) {
+					console.log(request.response);
+					statusMessage.textContent = message.success;
+					form.reset();
+					setTimeout(() => {
+						statusMessage.remove();
+					}, 3000);
+				} else {
+					console.log(request.response);
+					statusMessage.textContent = message.failure;
+				}
+			});
+		});
+	}
+});
