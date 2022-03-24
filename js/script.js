@@ -109,14 +109,13 @@ window.addEventListener('DOMContentLoaded', () => {
 	// Modal ------------------------------------------------------------------
 
 	const modalTrigger = document.querySelector('[data-modal]'),
-		modal = document.querySelector('.modal'),
-		modalCloseBtn = document.querySelector('[data-close]');
+			modal = document.querySelector('.modal');
 
 	modalTrigger.addEventListener('click', openModal);
-	modalCloseBtn.addEventListener('click', closeModal);
+
 
 	modal.addEventListener('click', event => {
-		if (event.target === modal) {
+		if (event.target === modal || event.target.getAttribute('data-close') == '') {
 			closeModal();
 		}
 	});
@@ -140,7 +139,7 @@ window.addEventListener('DOMContentLoaded', () => {
 		document.body.style.overflow = '';
 	}
 
-	const modalTimerId = setTimeout(openModal, 10000);
+	const modalTimerId = setTimeout(openModal, 50000);
 
 	function showModalByScroll() {
 		if ((window.pageYOffset + document.documentElement.clientHeight + 1) >= document.documentElement.scrollHeight) {
@@ -224,7 +223,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	).render();
 
 	// Forms -------------------------------------------------------------------------------------
-
 	const forms = document.querySelectorAll("form");
 	const message = {
 		loading: 'Загрузка',
@@ -240,14 +238,18 @@ window.addEventListener('DOMContentLoaded', () => {
 		form.addEventListener('submit', (event) => {
 			event.preventDefault();
 			const request = new XMLHttpRequest();
-			const statusMessage = document.createElement("div");
 
-			statusMessage.classList.add('status');
-			statusMessage.textContent = message.loading;
+			const statusMessage = document.createElement("div");
+			statusMessage.classList.add('lds-ellipsis');
+			statusMessage.innerHTML=`
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					`;
 			form.append(statusMessage);
 
-
-			request.open('POST', 'js/server.php');
+			request.open('POST', 'http://192.168.0.103:8099/api/form');
 			request.setRequestHeader('Content-type', 'application/json');
 
 			const formData = new FormData(form);
@@ -262,16 +264,42 @@ window.addEventListener('DOMContentLoaded', () => {
 			request.addEventListener('load', () => {
 				if (request.status === 200) {
 					console.log(request.response);
-					statusMessage.textContent = message.success;
+					showThanksModal(message.success);
 					form.reset();
-					setTimeout(() => {
-						statusMessage.remove();
-					}, 3000);
+					statusMessage.remove();
 				} else {
 					console.log(request.response);
-					statusMessage.textContent = message.failure;
+					showThanksModal(message.failure);
+					statusMessage.remove();
 				}
 			});
 		});
 	}
+
+	function showThanksModal(message) {
+		const prevModal = document.querySelector('.modal__dialog');
+
+		prevModal.classList.add('hide');
+		openModal();
+
+		const thanksModal = document.createElement('div');
+		thanksModal.classList.add('modal__dialog');
+
+		thanksModal.innerHTML = `
+		<div class="modal__content">
+			<div data-close class="modal__close">&times;</div>
+			<h3 class="modal__title">${message}</h3>
+		</div>
+		`;
+
+		document.querySelector('.modal').append(thanksModal);
+
+		setTimeout(() => {
+			thanksModal.remove();
+			prevModal.classList.add('show');
+			prevModal.classList.remove('hide');
+			closeModal();
+		}, 4000);
+	}
+
 });
