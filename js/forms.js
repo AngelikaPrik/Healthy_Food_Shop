@@ -6,10 +6,22 @@ const message = {
 };
 
 forms.forEach(item => {
-	postData(item);
+	bindPostData(item);
 });
 
-function postData(form) {
+const postData = async (url, data) => {
+	const res = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-type': 'application/json'
+		},
+		body: data
+	});
+
+	return await res.json();
+};
+
+function bindPostData(form) {
 	form.addEventListener('submit', (event) => {
 		event.preventDefault();
 
@@ -25,29 +37,19 @@ function postData(form) {
 
 		const formData = new FormData(form);
 
-		const object = {};
+		const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-		formData.forEach((value, key) => {
-			object[key] = value;
-		});
-
-		fetch('http://192.168.0.103:8099/api/form', {
-			method: 'POST',
-			headers: {
-				'Content-type': 'application/json'
-			},
-			body: JSON.stringify(object)
-		}).then(data => {
-			console.log(data);
-			showThanksModal(message.success);
-			statusMessage.remove();
-		}).catch(() => {
-			console.log(request.response);
-			showThanksModal(message.failure);
-			statusMessage.remove();
-		}).finally(() => {
-			form.reset();
-		});
+		postData('http://localhost:3000/requests', json)
+			.then(data => {
+				console.log(data);
+				showThanksModal(message.success);
+				statusMessage.remove();
+			}).catch(() => {
+				showThanksModal(message.failure);
+				statusMessage.remove();
+			}).finally(() => {
+				form.reset();
+			});
 	});
 }
 
@@ -76,3 +78,7 @@ function showThanksModal(message) {
 		closeModal();
 	}, 4000);
 }
+
+/* fetch('http://localhost:3000/menu')
+	.then(data => data.json())
+	.then(res => console.log(res)); */
