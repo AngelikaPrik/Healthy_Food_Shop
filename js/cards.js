@@ -41,32 +41,24 @@ class MenuCard {
 	}
 }
 
-new MenuCard(
-	'img/menu/fitness.png',
-	'vegy',
-	'«Фитнес»',
-	'Меню «Фитнес - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
-	8,
-	'.menu .container',
-	'menu__item'
-).render();
+const getResource = async (url) => {
+	const res = await fetch(url);
 
-new MenuCard(
-	'img/menu/premium.png',
-	'elite',
-	'«Премиум»',
-	'В меню «Премиум» используем красивый дизайн упаковки и качественное исполнение блюд. Красная рыба, орехи, морепродукты, фрукты — ресторанное меню без похода в дорогой ресторан!',
-	18,
-	'.menu .container',
-	'menu__item'
-).render();
+	if (!res.ok) {
+		throw new Error(`Could not fetch ${url}, status: ${res.status}`);
+	}
+	return await res.json();
+};
 
-new MenuCard(
-	'img/menu/post.png',
-	'post',
-	'«Постное»',
-	'Меню «Постное» - это тщательный подбор продуктов: отсутствие мяса,молоко из миндаля, овса, кокоса, правильное количество белков за счет тофу и вегетарианских стейков.',
-	15,
-	'.menu .container',
-	'menu__item'
-).render();
+getResource('http://localhost:3000/menu')
+	.then(data => {
+		data.forEach(({
+			img,
+			altimg,
+			title,
+			descr,
+			price
+		}) => {
+			new MenuCard(img, altimg, title, descr, price, '.menu .container', 'menu__item').render();
+		});
+	});
