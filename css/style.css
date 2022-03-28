@@ -1,4 +1,4 @@
-.offer__slider #current, .menu__item-subtitle {
+.offer__slider-counter #current, .menu__item-subtitle {
   background: linear-gradient(139.19deg, #FFFFFF -81.69%, #0DA03F 46.16%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -191,33 +191,12 @@ h4 {
   line-height: 29px;
 }
 
-.offer__slide img {
-  display: block;
-  border-radius: 10px;
-}
-
-.offer__slider-wrapper {
-  position: relative;
-}
-
-.offer__slider-wrapper .slide-desc {
-  position: absolute;
-  font-size: 24px;
-  bottom: 0;
-  left: 0;
-  width: -webkit-fill-available;
-  overflow: hidden;
-  background-color: rgba(37, 37, 37, 0.9);
-  padding: 10px 25px;
-  border-radius: 0 0 10px 10px;
-}
-
 .advantages {
   padding: 65px 0 60px 0;
   background-color: #141414;
 }
 
-.advantages .container {
+.advantages__inner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -227,7 +206,7 @@ h4 {
 }
 
 .offer__advantages {
-  width: 37%;
+  width: 36%;
 }
 
 .offer__advantage {
@@ -252,6 +231,32 @@ h4 {
   font-weight: 300;
 }
 
+.offer__slider {
+  width: 60%;
+}
+
+.offer__slide {
+  position: relative;
+}
+
+.offer__slide img {
+  display: block;
+  border-radius: 10px;
+  width: inherit;
+}
+
+.offer__slide .slide-desc {
+  position: absolute;
+  font-size: 24px;
+  bottom: 0;
+  left: 0;
+  width: -webkit-fill-available;
+  overflow: hidden;
+  background-color: rgba(37, 37, 37, 0.9);
+  padding: 10px 25px;
+  border-radius: 0 0 10px 10px;
+}
+
 .offer__slider-counter {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -259,16 +264,30 @@ h4 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 36px;
+  font-size: 28px;
   margin-top: 10px;
 }
 
+.offer__slider-next, .offer__slider-prev {
+  cursor: pointer;
+}
+
 .offer__slider-nums {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0 15px;
 }
 
-.offer__slider #current {
+.offer__slider-counter #current {
   font-size: 48px;
+}
+
+.offer__slider-counter #total {
+  font-weight: 300;
 }
 
 .calculating {

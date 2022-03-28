@@ -23,27 +23,4 @@
 		line-height: 29px;
 	}
 
-	&__slide {
-		img {
-			display: block;
-			border-radius: 10px;
-		}
-	}
-
-	&__slider-wrapper {
-		position: relative;
-
-		.slide-desc {
-			position: absolute;
-			font-size: 24px;
-			bottom: 0;
-			left: 0;
-			width: -webkit-fill-available;
-			overflow: hidden;
-			background-color: rgba(37, 37, 37, 0.9);
-			padding: 10px 25px;
-
-			border-radius: 0 0 10px 10px;
-		}
-	}
 }

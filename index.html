@@ -87,59 +87,75 @@
 	</section>
 	<section class="advantages">
 		<div class="container">
-			<div class="offer__advantages">
-				<div class="offer__advantage">
-					<img src="icons/apple_icon.svg" alt="">
-					<div class="offer__advantage-container">
-						<h3>Быстро и полезно
-						</h3>
-						<p class="offer__advantage-text">Готовка дома занимает много сил, времени и нервов. Мы привозим еду
-							сразу на целый день, и ты можешь действовать так, как тебе удобно, не подстраиваясь ни под кого.
-							Будь уверен в качестве продукта!</p>
+			<div class="advantages__inner">
+				<div class="offer__advantages">
+					<div class="offer__advantage">
+						<img src="icons/apple_icon.svg" alt="">
+						<div class="offer__advantage-container">
+							<h3>Быстро и полезно
+							</h3>
+							<p class="offer__advantage-text">Готовка дома занимает много сил, времени и нервов. Мы привозим еду
+								сразу на целый день, и ты можешь действовать так, как тебе удобно, не подстраиваясь ни под кого.
+								Будь уверен в качестве продукта!</p>
+						</div>
+					</div>
+					<div class="offer__advantage">
+						<img src="icons/avocado_icon.svg" alt="">
+						<div class="offer__advantage-container">
+							<h3>Правильный рацион
+							</h3>
+							<p class="offer__advantage-text">Мы разработали специальное меню, где учтены все нюансы правильного
+								питания, от баланса БЖУ до их приготовления и дробления рациона.
+							</p>
+						</div>
+	
 					</div>
 				</div>
-				<div class="offer__advantage">
-					<img src="icons/avocado_icon.svg" alt="">
-					<div class="offer__advantage-container">
-						<h3>Правильный рацион
-						</h3>
-						<p class="offer__advantage-text">Мы разработали специальное меню, где учтены все нюансы правильного
-							питания, от баланса БЖУ до их приготовления и дробления рациона.
-						</p>
+				<div class="offer__slider">
+					<div class="offer__slider-wrapper">
+						<div class="offer__slider-inner">
+							<div class="offer__slide">
+								<img src="img/slider/third_slide.png" alt="">
+								<div class="slide-desc">
+									Готовая еда из меню «Фитнес»
+								</div>
+							</div>
+							<div class="offer__slide">
+								<img src="img/slider/second_slide.png" alt="">
+								<div class="slide-desc">
+									Только свежие продукты
+								</div>
+							</div>
+							<div class="offer__slide">
+								<img src="img/slider/first_slide.png" alt="">
+								<div class="slide-desc">
+									Польза со вкусом
+								</div>
+							</div>
+							<div class="offer__slide">
+								<img src="img/slider/fourth_slide.png" alt="">
+								<div class="slide-desc">
+									Удобно брать с собой
+								</div>
+							</div>
+						</div>
 					</div>
+					<div class="offer__slider-counter">
+						<div class="offer__slider-prev">
+							<img src="icons/Vector.svg" alt="prev">
+						</div>
+						<div class="offer__slider-nums">
+							<span id="current">3</span>/<span id="total">4</span>
+						</div>
+						<div class="offer__slider-next">
+							<img src="icons/Vector-1.svg" alt="next">
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
 
-				</div>
-			</div>
-			<div class="offer__slider">
-				<div class="offer__slider-wrapper">
-					<div class="offer__slide">
-						<img src="img/slider/third_slider.png" alt="">
-					</div>
-					<div class="slide-desc">
-						Меню на неделю в «Фитнес»
-					</div>
-					<div class="slide-desc">
-						Только свежие продукты
-					</div>
-					<div class="slide-desc">
-						Перерабатываемые упаковки
-					</div>
-					<div class="slide-desc">
-						Удобно брать с собой
-					</div>
-				</div>
-				<div class="offer__slider-counter">
-					<div class="offer__slider-prev">
-						<img src="icons/Vector.svg" alt="prev">
-					</div>
-					<div class="offer__slider-nums">
-						<span id="current">3</span>/<span id="total">4</span>
-					</div>
-					<div class="offer__slider-next">
-						<img src="icons/Vector-1.svg" alt="next">
-					</div>
-				</div>
-			</div>
 		</div>
 	</section>
 	<section class="calculating">
@@ -303,12 +319,13 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/script.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="js/tabs.js"></script>
 	<script src="js/timer.js"></script>
 	<script src="js/modal.js"></script>
 	<script src="js/cards.js"></script>
 	<script src="js/forms.js"></script>
+	<script src="js/slider.js"></script>
 </body>
 
 </html>

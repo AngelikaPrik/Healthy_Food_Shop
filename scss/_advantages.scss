@@ -2,18 +2,16 @@
 	padding: 65px 0 60px 0;
 	background-color: #141414;
 
-
-	.container {
+	&__inner {
 		display: flex;
 		justify-content: space-between;
 	}
 }
 
 .offer {
-	&__advantages {
-		width: 37%;
+	&__advantages{
+		width: 36%;
 	}
-
 	&__advantage {
 		background-color: $mainGrey;
 		padding: 25px;
@@ -32,23 +30,53 @@
 		margin-top: 8px;
 		font-weight: 300;
 	}
+	&__slider {
+		width: 60%;
+	}
+	&__slide {
+		position: relative;
+		img {
+			display: block;
+			border-radius: 10px;
+			width: inherit;
+		}
+		.slide-desc {
+			position: absolute;
+			font-size: 24px;
+			bottom: 0;
+			left: 0;
+			width: -webkit-fill-available;
+			overflow: hidden;
+			background-color: rgba(37, 37, 37, 0.9);
+			padding: 10px 25px;
 
+			border-radius: 0 0 10px 10px;
+		}
+	}
 	&__slider-counter {
 		display: flex;
 		align-items: center;
-		font-size: 36px;
+		font-size: 28px;
 
 		margin-top: 10px;
 	}
-
+	&__slider-next,
+	&__slider-prev {
+		cursor: pointer;
+	}
 	&__slider-nums {
+		display: flex;
+		align-items: center;
 		margin: 0 15px;
 	}
 
-	&__slider {
+	&__slider-counter {
 		#current {
 			font-size: 48px;
 			@extend %greenDark;
+		}
+		#total {
+			font-weight: 300;
 		}
 	}
 }

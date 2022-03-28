@@ -52,13 +52,14 @@ const getResource = async (url) => {
 
 getResource('http://localhost:3000/menu')
 	.then(data => {
-		data.forEach(({
-			img,
-			altimg,
-			title,
-			descr,
-			price
-		}) => {
+		data.forEach(({img, altimg, title, descr, price}) => {
 			new MenuCard(img, altimg, title, descr, price, '.menu .container', 'menu__item').render();
 		});
 	});
+
+/* axios.get('http://localhost:3000/menu')
+		.then(data => {
+			data.data.forEach(({img, altimg, title, descr, price}) => {
+				new MenuCard(img, altimg, title, descr, price, '.menu .container', 'menu__item').render();
+			});
+		}); */
