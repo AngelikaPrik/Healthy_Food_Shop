@@ -1,3 +1,5 @@
+' use strict ';
+
 const tabsParent = document.querySelector('.tabheader__items'),
 	tabsContent = document.querySelectorAll('.tabcontent'),
 	tabs = document.querySelectorAll('.tabheader__item'),

@@ -1,4 +1,6 @@
-const deadline = '2022-03-31';
+' use strict ';
+
+const deadline = '2022-04-10';
 
 function getTimeRemaining(endtime) {
 	const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -37,7 +39,6 @@ function setClock(selector, endtime) {
 
 	function updateClock() {
 		const t = getTimeRemaining(endtime);
-
 		days.innerHTML = getZero(t.days);
 		hours.innerHTML = getZero(t.hours);
 		minutes.innerHTML = getZero(t.minutes);
@@ -45,6 +46,11 @@ function setClock(selector, endtime) {
 
 		if (t.total <= 0) {
 			clearInterval(timeInterval);
+
+			days.innerHTML = 0;
+			hours.innerHTML = 0;
+			minutes.innerHTML = 0;
+			seconds.innerHTML = 0;
 		}
 	}
 }

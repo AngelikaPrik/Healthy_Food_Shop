@@ -1,3 +1,5 @@
+' use strict ';
+
 class MenuCard {
 	constructor(src, alt, title, description, price, parentSelector, ...classes) {
 		this.src = src;

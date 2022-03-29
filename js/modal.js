@@ -1,3 +1,5 @@
+' use strict ';
+
 const modalTrigger = document.querySelector('[data-modal]'),
 		modal = document.querySelector('.modal');
 

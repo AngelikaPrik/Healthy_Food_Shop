@@ -1,3 +1,5 @@
+' use strict ';
+
 const forms = document.querySelectorAll("form");
 const message = {
 	loading: 'Загрузка',
