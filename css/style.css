@@ -387,19 +387,13 @@ h4 {
   color: #fff;
 }
 
-.calculating #gender {
-  border: 1px solid #5DD887;
-  border-radius: 10px;
-}
-
 .calculating #gender .calculating__choose-item {
-  border: none;
-  border-right: 1px solid #5DD887;
-  margin-right: 0;
+  border-radius: 0 10px 10px 0;
 }
 
-.calculating #gender .calculating__choose-item:last-child {
-  border-right: none;
+.calculating #gender .calculating__choose-item_active {
+  border-radius: 10px 0 0 10px;
+  margin-right: 0;
 }
 
 .calculating__total {

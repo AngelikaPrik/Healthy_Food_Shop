@@ -45,15 +45,11 @@
 	}
 
 	#gender {
-		border: 1px solid $lightGreen;
-		border-radius: 10px;
-
 		.calculating__choose-item {
-			border: none;
-			border-right: 1px solid $lightGreen;
-			margin-right: 0;
-			&:last-child {
-				border-right: none;
+			border-radius: 0 10px 10px 0;
+			&_active {
+				border-radius: 10px 0 0 10px;
+				margin-right: 0;
 			}
 		}
 	}
