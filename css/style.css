@@ -376,6 +376,9 @@ h4 {
   border: 1px solid #5DD887;
   border-radius: 10px;
   margin-right: 20px;
+  cursor: pointer;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
 }
 
 .calculating__choose-item:last-child {
@@ -388,12 +391,22 @@ h4 {
 }
 
 .calculating #gender .calculating__choose-item {
-  border-radius: 0 10px 10px 0;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .calculating #gender .calculating__choose-item_active {
-  border-radius: 10px 0 0 10px;
+  background-color: #5DD887;
   margin-right: 0;
+  margin-left: 0;
+}
+
+.calculating #gender #female {
+  border-radius: 10px 0 0 10px;
+}
+
+.calculating #gender #male {
+  border-radius: 0 10px 10px 0;
 }
 
 .calculating__total {
