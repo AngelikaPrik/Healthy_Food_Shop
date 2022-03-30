@@ -369,6 +369,7 @@ h4 {
 .calculating__choose input {
   width: 30%;
   margin: 0;
+  position: relative;
 }
 
 .calculating__choose-item {
