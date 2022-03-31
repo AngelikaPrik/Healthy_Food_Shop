@@ -1,91 +1,94 @@
 ' use strict ';
-import {openModal, closeModal} from './modal';
+import {
+	openModal,
+	closeModal
+} from './modal';
 
-function forms() {
+function forms(modalTimerId) {
 	const form = document.querySelectorAll("form");
 	const message = {
-	loading: 'Загрузка',
-	success: 'Спасибо! Наш менеджер свяжется с вами в течение 5 минут.',
-	failure: 'Что-то пошло не так...'
-};
+		loading: 'Загрузка',
+		success: 'Спасибо! Наш менеджер свяжется с вами в течение 5 минут.',
+		failure: 'Что-то пошло не так...'
+	};
 
-form.forEach(item => {
-	bindPostData(item);
-});
-
-const postData = async (url, data) => {
-	const res = await fetch(url, {
-		method: 'POST',
-		headers: {
-			'Content-type': 'application/json'
-		},
-		body: data
+	form.forEach(item => {
+		bindPostData(item);
 	});
 
-	return await res.json();
-};
+	const postData = async (url, data) => {
+		const res = await fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json'
+			},
+			body: data
+		});
 
-function bindPostData(form) {
-	form.addEventListener('submit', (event) => {
-		event.preventDefault();
+		return await res.json();
+	};
 
-		const statusMessage = document.createElement("div");
-		statusMessage.classList.add('lds-ellipsis');
-		statusMessage.innerHTML = `
+	function bindPostData(form) {
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			const statusMessage = document.createElement("div");
+			statusMessage.classList.add('lds-ellipsis');
+			statusMessage.innerHTML = `
 			<div></div>
 			<div></div>
 			<div></div>
 			<div></div>
 		`;
-		form.append(statusMessage);
+			form.append(statusMessage);
 
-		const formData = new FormData(form);
+			const formData = new FormData(form);
 
-		const json = JSON.stringify(Object.fromEntries(formData.entries()));
+			const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-		postData('http://localhost:3000/requests', json)
-			.then(data => {
-				console.log(data);
-				showThanksModal(message.success);
-				statusMessage.remove();
-			}).catch(() => {
-				showThanksModal(message.failure);
-				statusMessage.remove();
-			}).finally(() => {
-				form.reset();
-			});
-	});
-}
+			postData('http://localhost:3000/requests', json)
+				.then(data => {
+					console.log(data);
+					showThanksModal(message.success);
+					statusMessage.remove();
+				}).catch(() => {
+					showThanksModal(message.failure);
+					statusMessage.remove();
+				}).finally(() => {
+					form.reset();
+				});
+		});
+	}
 
-function showThanksModal(message) {
-	const prevModal = document.querySelector('.modal__dialog');
+	function showThanksModal(message) {
+		const prevModal = document.querySelector('.modal__dialog');
 
-	prevModal.classList.add('hide');
-	openModal();
+		prevModal.classList.add('hide');
+		openModal('.modal', modalTimerId);
 
-	const thanksModal = document.createElement('div');
-	thanksModal.classList.add('modal__dialog');
+		const thanksModal = document.createElement('div');
+		thanksModal.classList.add('modal__dialog');
 
-	thanksModal.innerHTML = `
+		thanksModal.innerHTML = `
 	<div class="modal__content">
 		<div data-close class="modal__close">&times;</div>
 		<h3 class="modal__title">${message}</h3>
 	</div>
 	`;
 
-	document.querySelector('.modal').append(thanksModal);
+		document.querySelector('.modal').append(thanksModal);
 
-	setTimeout(() => {
-		thanksModal.remove();
-		prevModal.classList.add('show');
-		prevModal.classList.remove('hide');
-		closeModal();
-	}, 4000);
-}
+		setTimeout(() => {
+			thanksModal.remove();
+			prevModal.classList.add('show');
+			prevModal.classList.remove('hide');
+			closeModal('.modal');
+		}, 4000);
+	}
 
-/* fetch('http://localhost:3000/menu')
-	.then(data => data.json())
-	.then(res => console.log(res)); */
+	/* fetch('http://localhost:3000/menu')
+		.then(data => data.json())
+		.then(res => console.log(res)); */
 }
 
 export default forms;

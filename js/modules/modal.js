@@ -1,11 +1,14 @@
 ' use strict ';
 
-function openModal(modalSelector) {
+function openModal(modalSelector, modalTimerId) {
 	const modal = document.querySelector(modalSelector);
 	modal.classList.add('show');
 	modal.classList.remove('hide');
 	document.body.style.overflow = 'hidden';
-	clearInterval(modalTimerId);
+	console.log(modalTimerId);
+	if (modalTimerId) {
+		clearInterval(modalTimerId);
+	}
 }
 
 function closeModal(modalSelector) {
@@ -15,11 +18,11 @@ function closeModal(modalSelector) {
 	document.body.style.overflow = '';
 }
 
-function modal(triggerSelector, modalSelector) {
+function modal(triggerSelector, modalSelector, modalTimerId) {
 	const modalTrigger = document.querySelector(triggerSelector),
 		modal = document.querySelector(modalSelector);
 
-	modalTrigger.addEventListener('click', () => openModal(modalSelector));
+	modalTrigger.addEventListener('click', () => openModal(modalSelector, modalTimerId));
 
 
 	modal.addEventListener('click', event => {
@@ -34,11 +37,9 @@ function modal(triggerSelector, modalSelector) {
 		}
 	});
 
-	const modalTimerId = setTimeout(openModal, 50000);
-
 	function showModalByScroll() {
 		if ((window.pageYOffset + document.documentElement.clientHeight + 1) >= document.documentElement.scrollHeight) {
-			openModal(modalSelector);
+			openModal(modalSelector, modalTimerId);
 			window.removeEventListener('scroll', showModalByScroll);
 		}
 	}

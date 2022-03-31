@@ -217,91 +217,91 @@ __webpack_require__.r(__webpack_exports__);
 ' use strict ';
 
 
-function forms() {
+function forms(modalTimerId) {
 	const form = document.querySelectorAll("form");
 	const message = {
-	loading: 'Загрузка',
-	success: 'Спасибо! Наш менеджер свяжется с вами в течение 5 минут.',
-	failure: 'Что-то пошло не так...'
-};
+		loading: 'Загрузка',
+		success: 'Спасибо! Наш менеджер свяжется с вами в течение 5 минут.',
+		failure: 'Что-то пошло не так...'
+	};
 
-form.forEach(item => {
-	bindPostData(item);
-});
-
-const postData = async (url, data) => {
-	const res = await fetch(url, {
-		method: 'POST',
-		headers: {
-			'Content-type': 'application/json'
-		},
-		body: data
+	form.forEach(item => {
+		bindPostData(item);
 	});
 
-	return await res.json();
-};
+	const postData = async (url, data) => {
+		const res = await fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json'
+			},
+			body: data
+		});
 
-function bindPostData(form) {
-	form.addEventListener('submit', (event) => {
-		event.preventDefault();
+		return await res.json();
+	};
 
-		const statusMessage = document.createElement("div");
-		statusMessage.classList.add('lds-ellipsis');
-		statusMessage.innerHTML = `
+	function bindPostData(form) {
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			const statusMessage = document.createElement("div");
+			statusMessage.classList.add('lds-ellipsis');
+			statusMessage.innerHTML = `
 			<div></div>
 			<div></div>
 			<div></div>
 			<div></div>
 		`;
-		form.append(statusMessage);
+			form.append(statusMessage);
 
-		const formData = new FormData(form);
+			const formData = new FormData(form);
 
-		const json = JSON.stringify(Object.fromEntries(formData.entries()));
+			const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-		postData('http://localhost:3000/requests', json)
-			.then(data => {
-				console.log(data);
-				showThanksModal(message.success);
-				statusMessage.remove();
-			}).catch(() => {
-				showThanksModal(message.failure);
-				statusMessage.remove();
-			}).finally(() => {
-				form.reset();
-			});
-	});
-}
+			postData('http://localhost:3000/requests', json)
+				.then(data => {
+					console.log(data);
+					showThanksModal(message.success);
+					statusMessage.remove();
+				}).catch(() => {
+					showThanksModal(message.failure);
+					statusMessage.remove();
+				}).finally(() => {
+					form.reset();
+				});
+		});
+	}
 
-function showThanksModal(message) {
-	const prevModal = document.querySelector('.modal__dialog');
+	function showThanksModal(message) {
+		const prevModal = document.querySelector('.modal__dialog');
 
-	prevModal.classList.add('hide');
-	(0,_modal__WEBPACK_IMPORTED_MODULE_0__.openModal)();
+		prevModal.classList.add('hide');
+		(0,_modal__WEBPACK_IMPORTED_MODULE_0__.openModal)('.modal', modalTimerId);
 
-	const thanksModal = document.createElement('div');
-	thanksModal.classList.add('modal__dialog');
+		const thanksModal = document.createElement('div');
+		thanksModal.classList.add('modal__dialog');
 
-	thanksModal.innerHTML = `
+		thanksModal.innerHTML = `
 	<div class="modal__content">
 		<div data-close class="modal__close">&times;</div>
 		<h3 class="modal__title">${message}</h3>
 	</div>
 	`;
 
-	document.querySelector('.modal').append(thanksModal);
+		document.querySelector('.modal').append(thanksModal);
 
-	setTimeout(() => {
-		thanksModal.remove();
-		prevModal.classList.add('show');
-		prevModal.classList.remove('hide');
-		(0,_modal__WEBPACK_IMPORTED_MODULE_0__.closeModal)();
-	}, 4000);
-}
+		setTimeout(() => {
+			thanksModal.remove();
+			prevModal.classList.add('show');
+			prevModal.classList.remove('hide');
+			(0,_modal__WEBPACK_IMPORTED_MODULE_0__.closeModal)('.modal');
+		}, 4000);
+	}
 
-/* fetch('http://localhost:3000/menu')
-	.then(data => data.json())
-	.then(res => console.log(res)); */
+	/* fetch('http://localhost:3000/menu')
+		.then(data => data.json())
+		.then(res => console.log(res)); */
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (forms);
@@ -322,12 +322,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 ' use strict ';
 
-function openModal(modalSelector) {
+function openModal(modalSelector, modalTimerId) {
 	const modal = document.querySelector(modalSelector);
 	modal.classList.add('show');
 	modal.classList.remove('hide');
 	document.body.style.overflow = 'hidden';
-	clearInterval(modalTimerId);
+	console.log(modalTimerId);
+	if (modalTimerId) {
+		clearInterval(modalTimerId);
+	}
 }
 
 function closeModal(modalSelector) {
@@ -337,11 +340,11 @@ function closeModal(modalSelector) {
 	document.body.style.overflow = '';
 }
 
-function modal(triggerSelector, modalSelector) {
+function modal(triggerSelector, modalSelector, modalTimerId) {
 	const modalTrigger = document.querySelector(triggerSelector),
 		modal = document.querySelector(modalSelector);
 
-	modalTrigger.addEventListener('click', () => openModal(modalSelector));
+	modalTrigger.addEventListener('click', () => openModal(modalSelector, modalTimerId));
 
 
 	modal.addEventListener('click', event => {
@@ -356,11 +359,9 @@ function modal(triggerSelector, modalSelector) {
 		}
 	});
 
-	const modalTimerId = setTimeout(openModal, 50000);
-
 	function showModalByScroll() {
 		if ((window.pageYOffset + document.documentElement.clientHeight + 1) >= document.documentElement.scrollHeight) {
-			openModal(modalSelector);
+			openModal(modalSelector, modalTimerId);
 			window.removeEventListener('scroll', showModalByScroll);
 		}
 	}
@@ -727,12 +728,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 window.addEventListener('DOMContentLoaded', () => {
+
+	const modalTimerId = setTimeout(() => (0,_modules_modal__WEBPACK_IMPORTED_MODULE_6__.openModal)('.modal', modalTimerId), 50000);
+
 	(0,_modules_tabs__WEBPACK_IMPORTED_MODULE_0__["default"])();
 	(0,_modules_slider__WEBPACK_IMPORTED_MODULE_1__["default"])();
 	(0,_modules_calculating__WEBPACK_IMPORTED_MODULE_2__["default"])();
 	(0,_modules_cards__WEBPACK_IMPORTED_MODULE_3__["default"])();
-	(0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])();
+	(0,_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])(modalTimerId);
 	(0,_modules_timer__WEBPACK_IMPORTED_MODULE_5__["default"])();
 	(0,_modules_modal__WEBPACK_IMPORTED_MODULE_6__["default"])('[data-modal]', '.modal');
 });
