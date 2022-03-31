@@ -1,4 +1,6 @@
 ' use strict ';
+import {openModal, closeModal} from './modal';
+
 function forms() {
 	const form = document.querySelectorAll("form");
 	const message = {
@@ -86,4 +88,4 @@ function showThanksModal(message) {
 	.then(res => console.log(res)); */
 }
 
-module.exports = forms;
+export default forms;

@@ -1,46 +1,53 @@
 ' use strict ';
 
-function modal() {
-	const modalTrigger = document.querySelector('[data-modal]'),
-		modal = document.querySelector('.modal');
+function openModal(modalSelector) {
+	const modal = document.querySelector(modalSelector);
+	modal.classList.add('show');
+	modal.classList.remove('hide');
+	document.body.style.overflow = 'hidden';
+	clearInterval(modalTimerId);
+}
 
-	modalTrigger.addEventListener('click', openModal);
+function closeModal(modalSelector) {
+	const modal = document.querySelector(modalSelector);
+	modal.classList.add('hide');
+	modal.classList.remove('show');
+	document.body.style.overflow = '';
+}
+
+function modal(triggerSelector, modalSelector) {
+	const modalTrigger = document.querySelector(triggerSelector),
+		modal = document.querySelector(modalSelector);
+
+	modalTrigger.addEventListener('click', () => openModal(modalSelector));
 
 
 	modal.addEventListener('click', event => {
 		if (event.target === modal || event.target.getAttribute('data-close') == '') {
-			closeModal();
+			closeModal(modalSelector);
 		}
 	});
 
 	document.addEventListener('keydown', event => {
 		if (event.code === 'Escape' && modal.classList.contains('show')) {
-			closeModal();
+			closeModal(modalSelector);
 		}
 	});
-
-	function openModal() {
-		modal.classList.add('show');
-		modal.classList.remove('hide');
-		document.body.style.overflow = 'hidden';
-		clearInterval(modalTimerId);
-	}
-
-	function closeModal() {
-		modal.classList.add('hide');
-		modal.classList.remove('show');
-		document.body.style.overflow = '';
-	}
 
 	const modalTimerId = setTimeout(openModal, 50000);
 
 	function showModalByScroll() {
 		if ((window.pageYOffset + document.documentElement.clientHeight + 1) >= document.documentElement.scrollHeight) {
-			openModal();
+			openModal(modalSelector);
 			window.removeEventListener('scroll', showModalByScroll);
 		}
 	}
 	window.addEventListener('scroll', showModalByScroll);
 }
 
-module.exports = modal;
+export default modal;
+
+export {
+	openModal,
+	closeModal
+};
