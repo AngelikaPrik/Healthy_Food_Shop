@@ -1,4 +1,7 @@
 ' use strict ';
+import {
+	getResource
+} from '../services/services';
 
 function cards() {
 	class MenuCard {
@@ -13,14 +16,14 @@ function cards() {
 			this.changeToUAH();
 			this.classes = classes || 'menu__item';
 		}
-	
+
 		changeToUAH() {
 			this.price = Math.floor(this.price * this.transfer);
 		}
-	
+
 		render() {
 			const element = document.createElement('div');
-	
+
 			if (this.classes.length === 0) {
 				this.element = 'menu__item';
 				element.classList.add(element);
@@ -43,23 +46,20 @@ function cards() {
 			this.parent.append(element);
 		}
 	}
-	
-	const getResource = async (url) => {
-		const res = await fetch(url);
-	
-		if (!res.ok) {
-			throw new Error(`Could not fetch ${url}, status: ${res.status}`);
-		}
-		return await res.json();
-	};
-	
+
 	getResource('http://localhost:3000/menu')
 		.then(data => {
-			data.forEach(({img, altimg, title, descr, price}) => {
+			data.forEach(({
+				img,
+				altimg,
+				title,
+				descr,
+				price
+			}) => {
 				new MenuCard(img, altimg, title, descr, price, '.menu .container', 'menu__item').render();
 			});
 		});
-	
+
 }
 
 export default cards;
