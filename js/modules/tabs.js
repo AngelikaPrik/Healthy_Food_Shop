@@ -1,6 +1,7 @@
 ' use strict ';
 
-const tabsParent = document.querySelector('.tabheader__items'),
+function tabs() {
+	const tabsParent = document.querySelector('.tabheader__items'),
 	tabsContent = document.querySelectorAll('.tabcontent'),
 	tabs = document.querySelectorAll('.tabheader__item'),
 	preview = document.querySelector('.preview'),
@@ -47,3 +48,6 @@ tabsParent.addEventListener('click', event => {
 		});
 	}
 });
+}
+
+module.exports = tabs;

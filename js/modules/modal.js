@@ -1,6 +1,7 @@
 ' use strict ';
 
-const modalTrigger = document.querySelector('[data-modal]'),
+function modal() {
+	const modalTrigger = document.querySelector('[data-modal]'),
 		modal = document.querySelector('.modal');
 
 	modalTrigger.addEventListener('click', openModal);
@@ -40,3 +41,6 @@ const modalTrigger = document.querySelector('[data-modal]'),
 		}
 	}
 	window.addEventListener('scroll', showModalByScroll);
+}
+
+module.exports = modal;

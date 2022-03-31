@@ -1,13 +1,13 @@
 ' use strict ';
-
-const forms = document.querySelectorAll("form");
-const message = {
+function forms() {
+	const form = document.querySelectorAll("form");
+	const message = {
 	loading: 'Загрузка',
 	success: 'Спасибо! Наш менеджер свяжется с вами в течение 5 минут.',
 	failure: 'Что-то пошло не так...'
 };
 
-forms.forEach(item => {
+form.forEach(item => {
 	bindPostData(item);
 });
 
@@ -84,3 +84,6 @@ function showThanksModal(message) {
 /* fetch('http://localhost:3000/menu')
 	.then(data => data.json())
 	.then(res => console.log(res)); */
+}
+
+module.exports = forms;
