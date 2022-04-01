@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "babel-loader": "^8.2.4",
+    "es6-promise-polyfill": "^1.2.0",
+    "nodelist-foreach-polyfill": "^1.2.0",
     "normalize-scss": "^7.0.1"
   },
   "name": "healthyfood",
@@ -21,7 +25,15 @@
     "url": "https://github.com/AngelikaPrik/Healthy_Food_Shop/issues"
   },
   "homepage": "https://github.com/AngelikaPrik/Healthy_Food_Shop#readme",
+  "browsersList": [
+    "> 1%"
+  ],
   "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "bable-loader": "^0.0.1-security",
+    "core-js": "^3.21.1",
     "json-server": "^0.17.0",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2"

@@ -19,7 +19,4 @@ const getResource = async (url) => {
 	return await res.json();
 };
 
-export {
-	postData,
-	getResource
-};
+export { postData, getResource};

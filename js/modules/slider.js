@@ -1,15 +1,16 @@
 ' use strict';
 
-function slider() {
-	const slides = document.querySelectorAll('.offer__slide'),
-		slider = document.querySelector('.offer__slider'),
-		slidesWrapper = document.querySelector('.offer__slider-wrapper'),
-		slidesField = document.querySelector('.offer__slider-inner'),
+function slider({container,  wrapper, field, slide, nextArrow, prevArrow, totalCounter, currentCounter}) {
 
-		prev = document.querySelector('.offer__slider-prev'),
-		next = document.querySelector('.offer__slider-next'),
-		total = document.querySelector('#total'),
-		current = document.querySelector('#current'),
+	const slider = document.querySelector(container),
+		slidesWrapper = document.querySelector(wrapper),
+		slidesField = document.querySelector(field),
+		slides = document.querySelectorAll(slide),
+
+		prev = document.querySelector(prevArrow),
+		next = document.querySelector(nextArrow),
+		total = document.querySelector(totalCounter),
+		current = document.querySelector(currentCounter),
 
 		width = window.getComputedStyle(slidesWrapper).width,
 
