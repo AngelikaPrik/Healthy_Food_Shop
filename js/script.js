@@ -1,5 +1,6 @@
 import 'nodelist-foreach-polyfill';
 import 'es6-promise-polyfill';
+import navigate from './modules/navheader';
 import tabs from './modules/tabs';
 import slider from './modules/slider';
 import calculating from './modules/calculating';
@@ -15,6 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	const modalTimerId = setTimeout(() => openModal('.modal', modalTimerId), 50000);
 
+	navigate();
 	tabs('.tabheader__item', '.tabcontent', '.tabheader__items', 'tabheader__active');
 	slider({
 		container: '.offer__slider',
