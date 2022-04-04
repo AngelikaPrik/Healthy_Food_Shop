@@ -6,7 +6,7 @@ function navigate() {
 		offerLink = document.querySelector('#offer-sale'),
 		connectLink = document.querySelector('#connect');
 
-	calcLink.addEventListener('click', () => scrollLink(event, 1800));
+	calcLink.addEventListener('click', () => scrollLink(event, 1850));
 	menuLink.addEventListener('click', () => scrollLink(event, 2550));
 	offerLink.addEventListener('click', () => scrollLink(event, 3350));
 	connectLink.addEventListener('click', () => scrollLink(event, document.documentElement.scrollHeight));
