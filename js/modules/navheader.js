@@ -12,11 +12,11 @@ function navigate() {
 
 
 	calcLink.addEventListener('click', e => setScrollIntoView(e, calcSection));
-	menuLink.addEventListener('click', e => setScrollIntoView(false, e, menuSection));
+	menuLink.addEventListener('click', e => setScrollIntoView(e, menuSection, false));
 	promoteLink.addEventListener('click', e => setScrollIntoView(e, promotionSection));
 	connectLink.addEventListener('click', e => setScrollIntoView(e, footerSection));
 
-	function setScrollIntoView(top, event, section) {
+	function setScrollIntoView(event, section, top = true) {
 		event.preventDefault();
 		section.scrollIntoView(top);
 	}
