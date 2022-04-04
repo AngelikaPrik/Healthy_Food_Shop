@@ -2,19 +2,25 @@
 
 function navigate() {
 	const menuLink = document.querySelector('#menu'),
+		menuSection = document.querySelector('.menu'),
 		calcLink = document.querySelector('#calc'),
-		offerLink = document.querySelector('#offer-sale'),
-		connectLink = document.querySelector('#connect');
+		calcSection = document.querySelector('.calculating'),
+		promoteLink = document.querySelector('#promote'),
+		promotionSection = document.querySelector('.promotion'),
+		connectLink = document.querySelector('#connect'),
+		footerSection = document.querySelector('.footer');
 
-	calcLink.addEventListener('click', () => scrollLink(event, 1850));
-	menuLink.addEventListener('click', () => scrollLink(event, 2550));
-	offerLink.addEventListener('click', () => scrollLink(event, 3350));
-	connectLink.addEventListener('click', () => scrollLink(event, document.documentElement.scrollHeight));
 
-	function scrollLink(event, value) {
+	calcLink.addEventListener('click', e => setScrollIntoView(e, calcSection));
+	menuLink.addEventListener('click', e => setScrollIntoView(false, e, menuSection));
+	promoteLink.addEventListener('click', e => setScrollIntoView(e, promotionSection));
+	connectLink.addEventListener('click', e => setScrollIntoView(e, footerSection));
+
+	function setScrollIntoView(top, event, section) {
 		event.preventDefault();
-		window.scrollBy(0, value);
+		section.scrollIntoView(top);
 	}
+
 }
 
 export default navigate;
