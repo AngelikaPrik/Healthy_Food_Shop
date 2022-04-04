@@ -1,6 +1,5 @@
 import 'nodelist-foreach-polyfill';
 import 'es6-promise-polyfill';
-
 import tabs from './modules/tabs';
 import slider from './modules/slider';
 import calculating from './modules/calculating';
